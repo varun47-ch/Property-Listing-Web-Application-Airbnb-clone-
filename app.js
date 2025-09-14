@@ -64,10 +64,6 @@ const sessionOptions = {
   }
 };
 
-//intalization
-app.get("/", (req, res)=>{
-  res.send("root");
-});
 //cookies,session,flash
 app.use(session(sessionOptions));
 app.use(flash());
@@ -83,6 +79,11 @@ app.use((req, res, next)=>{
   res.locals.currUser = req.user;
   next();
 });
+
+//intalization
+app.get("/", (req, res)=>{
+  res.send("root");
+  });
 
 app.use("/listings", listingRouter);
 app.use("/listings/:id/reviews", reviewRouter);
